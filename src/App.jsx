@@ -7,6 +7,8 @@ import { Create, Dashboard, Landing, Login, Signup } from "./pages";
 function App() {
   const { user, authIsReady } = useContext(AuthContext);
 
+  // console.log(import.meta.env.VITE_FB_API_KEY);
+
   return (
     <div className="text-red-400">
       {authIsReady && (

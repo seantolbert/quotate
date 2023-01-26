@@ -27,7 +27,8 @@ const Dashboard = () => {
         {quotes &&
           quotes.map((quote, key) => (
             <div className="flex gap-5" key={key}>
-              <p>{quote.content}</p>
+              <p>{quote.quoteContent}</p>
+              <p>{quote.user && quote.user}</p>
               <button
                 onClick={() => {
                   handleUpdateQuote(quote);

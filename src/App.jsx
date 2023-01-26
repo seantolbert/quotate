@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Navbar, Footer } from "./components";
 import { AuthContext } from "./context/AuthContext";
-import { Create, Dashboard, Landing, Login, Signup } from "./pages";
+import { Create, Dashboard, Login, Signup } from "./pages";
 
 function App() {
   const { user, authIsReady } = useContext(AuthContext);
@@ -13,7 +13,7 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <Routes>
-            <Route path="/" element={user ? <Dashboard /> : <Landing />} />
+            <Route path="/" element={<Dashboard />} />
             <Route
               path="/create"
               element={user ? <Create /> : <Navigate to="/login" />}

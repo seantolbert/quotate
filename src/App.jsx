@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Navbar, Footer } from "./components";
 import { AuthContext } from "./context/AuthContext";
-import { Create, Dashboard, Login, Signup } from "./pages";
+import { Create, Dashboard, Login, MyQuotesPage, Signup } from "./pages";
 import Profile from "./pages/Profile";
 import QuotePage from "./pages/QuotePage";
 
@@ -20,6 +20,10 @@ function App() {
             <Route
               path="/profile"
               element={user ? <Profile /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/myquotes"
+              element={user ? <MyQuotesPage /> : <Navigate to="/login" />}
             />
             <Route
               path="/create"

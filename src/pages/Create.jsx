@@ -13,6 +13,7 @@ const Create = () => {
   const [search, setSearch] = useState("");
   const [bookList, setBookList] = useState([]);
   const [isSelected, setIsSelected] = useState(null);
+  const [imageURL, setImageURL] = useState(null);
 
   const navigate = useNavigate();
 
@@ -34,6 +35,7 @@ const Create = () => {
     const book = {
       title: bookTitle,
       author: authors[0],
+      imageURL,
     };
 
     const quote = {
@@ -99,6 +101,7 @@ const Create = () => {
               setIsSelected(key);
               setAuthors(book.volumeInfo.authors);
               setBookTitle(book.volumeInfo.title);
+              setImageURL(book.volumeInfo.imageLinks.smallThumbnail);
             }}
             className={
               isSelected === key ? "border border-yellow-300" : undefined

@@ -25,8 +25,6 @@ const Profile = () => {
     console.log("email sent");
   };
 
-  console.log(userDoc);
-
   const handleChangeDisplayName = async () => {
     await updateProfile(Auth.currentUser, {
       displayName: newDisplayName,
@@ -91,9 +89,7 @@ const Profile = () => {
           </button>
         )}
       </div>
-      {userDoc && (
-        <p>favorites {userDoc.favorites}</p>
-      )}
+      {userDoc && <p>favorites {userDoc.favorites}</p>}
     </div>
   );
 };

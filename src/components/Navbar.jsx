@@ -29,6 +29,7 @@ const Navbar = () => {
         <button onClick={handleCreateNavigate}>Add</button>
         {user ? (
           <div className="flex gap-5">
+            <Link to="/myquotes">My Quotes</Link>
             <Link to="/profile">
               username:
               {user.displayName}

@@ -8,7 +8,7 @@ const Signup = () => {
   const [confirm, setConfirm] = useState("");
   const [username, setUsername] = useState("");
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const { signup, error, isPending } = useSignup();
 

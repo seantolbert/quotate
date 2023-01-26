@@ -12,6 +12,7 @@ const Create = () => {
   const [authors, setAuthors] = useState([]);
   const [search, setSearch] = useState("");
   const [bookList, setBookList] = useState([]);
+  const [isSelected, setIsSelected] = useState(null);
 
   const navigate = useNavigate();
 
@@ -19,7 +20,7 @@ const Create = () => {
 
   const { addDocument, response } = useFirestore("quotes");
 
-  console.log(bookList);
+  // console.log(bookList);
 
   const handleQuoteSubmit = async (e) => {
     e.preventDefault();
@@ -30,12 +31,16 @@ const Create = () => {
       id: user.uid,
     };
 
+    const book = {
+      title: bookTitle,
+      author: authors[0],
+    };
+
     const quote = {
       quoteContent,
       date: Timestamp.fromDate(new Date()),
-      bookTitle,
-      authors,
       createdBy,
+      book,
       hearts: 0,
     };
 
@@ -45,7 +50,6 @@ const Create = () => {
       console.log(response.error);
       navigate("/");
     }
-    console.log("created " + quote.quoteContent);
   };
 
   const key = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
@@ -83,11 +87,32 @@ const Create = () => {
         />
 
         <button onClick={handleBookSearch}>search</button>
+
+        <p>{formError}</p>
       </div>
 
       <div>
         {bookList.map((book, key) => (
-          <p key={key}>{book.volumeInfo.title}</p>
+          <button
+            key={key}
+            onClick={() => {
+              setIsSelected(key);
+              setAuthors(book.volumeInfo.authors);
+              setBookTitle(book.volumeInfo.title);
+            }}
+            className={
+              isSelected === key ? "border border-yellow-300" : undefined
+            }
+          >
+            <div>
+              <p>{book.volumeInfo.title}</p>
+              <div>
+                {book.volumeInfo.authors.map((author, key) => (
+                  <p key={key}>{author}</p>
+                ))}
+              </div>
+            </div>
+          </button>
         ))}
       </div>
     </div>

@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Navbar, Footer } from "./components";
 import { AuthContext } from "./context/AuthContext";
 import { Create, Dashboard, Login, Signup } from "./pages";
+import Profile from "./pages/Profile";
+import QuotePage from "./pages/QuotePage";
 
 function App() {
   const { user, authIsReady } = useContext(AuthContext);
@@ -14,6 +16,11 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/quotes/:id" element={<QuotePage />} />
+            <Route
+              path="/profile"
+              element={user ? <Profile /> : <Navigate to="/login" />}
+            />
             <Route
               path="/create"
               element={user ? <Create /> : <Navigate to="/login" />}

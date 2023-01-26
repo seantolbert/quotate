@@ -29,10 +29,10 @@ const Navbar = () => {
         <button onClick={handleCreateNavigate}>Add</button>
         {user ? (
           <div className="flex gap-5">
-            <p>
+            <Link to="/profile">
               username:
               {user.displayName}
-            </p>
+            </Link>
             <p>{error}</p>
             <button onClick={logout}>sign out</button>
           </div>

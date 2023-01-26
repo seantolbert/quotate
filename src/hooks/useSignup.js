@@ -26,6 +26,7 @@ export const useSignup = () => {
       await setDoc(doc(db, "users", res.user.uid), {
         online: true,
         displayName: username,
+        favorites: [],
       });
 
       dispatch({ type: "LOGIN", payload: res.user });

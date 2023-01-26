@@ -1,7 +1,5 @@
-import { updateDoc } from "firebase/firestore";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
 import { Auth } from "../firebase/config";
 import { useDocument } from "../hooks/useDocument";
 import { useFirestore } from "../hooks/useFirestore";
@@ -9,12 +7,14 @@ import { useFirestore } from "../hooks/useFirestore";
 const QuotePage = () => {
   const { id } = useParams();
   const { error, document: quote } = useDocument("quotes", id);
+  const [user, setUser] = useState(null);
 
   const [isLiked, setIsLiked] = useState();
-  const { document: user } = useDocument("users", Auth.currentUser.uid);
 
   useEffect(() => {
     if (user) {
+      const { document: userDoc } = useDocument("users", Auth.currentUser.uid);
+      setUser(userDoc);
       setIsLiked(user.favorites.includes(quote.id));
     }
   }, [user]);
@@ -74,11 +74,13 @@ const QuotePage = () => {
       )}
       <p>{quote.createdBy.displayName}</p>
       <p>likes: {quote.hearts}</p>
-      <p>liked: {isLiked ? "true" : "false"}</p>
+      {user !== null && <p>liked: {isLiked ? "true" : "false"}</p>}
       <div>
-        <button onClick={isLiked ? handleUnlike : handleLike}>like</button>
+        {user && (
+          <button onClick={isLiked ? handleUnlike : handleLike}>like</button>
+        )}
       </div>
-      {Auth.currentUser.uid === quote.createdBy.id && (
+      {user && user.uid === quote.createdBy.id && (
         <button onClick={() => setShowInputs(!showInputs)}>update</button>
       )}
       <img src={quote.book.imageURL} alt="book cover art" />

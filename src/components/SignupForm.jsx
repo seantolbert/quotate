@@ -1,15 +1,13 @@
 import { useState } from "react";
 import { useSignup } from "../hooks/useSignup";
 import { Link, useNavigate } from "react-router-dom";
+import LoginForm from "./LoginForm";
 
-const Signup = () => {
+const SignupForm = ({setIsLogin}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [username, setUsername] = useState("");
-
-  // const navigate = useNavigate();
-
   const { signup, error, isPending } = useSignup();
 
   const handleSubmit = (e) => {
@@ -20,7 +18,7 @@ const Signup = () => {
   const disable = password !== confirm;
 
   return (
-    <div>
+    <div className="h-screen w-full flex justify-center items-center flex-col">
       <form onSubmit={handleSubmit}>
         <p>sign up</p>
         <input
@@ -57,7 +55,12 @@ const Signup = () => {
         </button>
       </form>
 
-      <Link to="/login">Log In</Link>
+      <div className="flex gap-5">
+        <p>Already have an account?</p>
+        <button onClick={() => setIsLogin(true)} className="underline">
+          Log In
+        </button>
+      </div>
 
       {isPending && <p>Loading... </p>}
 
@@ -65,4 +68,4 @@ const Signup = () => {
     </div>
   );
 };
-export default Signup;
+export default SignupForm;

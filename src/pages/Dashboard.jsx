@@ -1,23 +1,11 @@
 import { useCollection } from "../hooks/useCollection";
 import { Link } from "react-router-dom";
 import { useFirestore } from "../hooks/useFirestore";
-import { useHeart } from "../hooks/useHeart";
-import { Auth } from "../firebase/config";
-import { useDocument } from "../hooks/useDocument";
 
 const Dashboard = () => {
   const { documents: quotes } = useCollection("quotes");
 
   const { deleteDocument, response } = useFirestore("quotes");
-
-  // const { document: user } = useDocument("users", Auth.currentUser.uid);
-
-  // const { like } = useHeart();
-
-  // const handleLike = async (quote) => {
-  //   like(quote);
-  //   // console.log("successful like?");
-  // };
 
   return (
     <div>
@@ -34,7 +22,6 @@ const Dashboard = () => {
                 <p>{quote.user && quote.user}</p>
               </Link>
               <button onClick={() => deleteDocument(quote.id)}>delete</button>
-              {/* <button onClick={() => handleLike(user, quote)}>like</button> */}
             </div>
           ))}
       </div>

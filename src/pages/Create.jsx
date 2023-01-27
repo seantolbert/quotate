@@ -17,11 +17,13 @@ const Create = () => {
 
   const navigate = useNavigate();
 
+  const disable = bookTitle === "" || quoteContent === "";
+
   const { user } = useContext(AuthContext);
 
   const { addDocument, response } = useFirestore("quotes");
 
-  // console.log(bookList);
+  console.log(bookList);
 
   const handleQuoteSubmit = async (e) => {
     e.preventDefault();
@@ -46,9 +48,11 @@ const Create = () => {
       hearts: 0,
     };
 
+    console.log(response);
     await addDocument(quote);
 
     if (!response.error) {
+      console.log(quote);
       console.log(response.error);
       navigate("/");
     }
@@ -68,55 +72,84 @@ const Create = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleQuoteSubmit}>
-        <input
-          type="content"
-          name="content"
-          value={quoteContent}
-          onChange={(e) => setQuoteContent(e.target.value)}
-        />
+    <div className="w-screen h-screen flex flex-col justify-start items-center">
+      {/*  */}
+      {/* 1st Row */}
+      {/*  */}
 
-        <button type="submit">submit</button>
-      </form>
-
-      <div>
-        <input
-          type="text"
-          name="search"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-
-        <button onClick={handleBookSearch}>search</button>
-
-        <p>{formError}</p>
+      <div className="w-4/5 flex justify-center items-center h-1/3 border ">
+        {/*  */}
+        {/* quote display section */}
+        {/*  */}
+        <p className="text-4xl">{quoteContent}</p>
       </div>
 
-      <div>
-        {bookList.map((book, key) => (
-          <button
-            key={key}
-            onClick={() => {
-              setIsSelected(key);
-              setAuthors(book.volumeInfo.authors);
-              setBookTitle(book.volumeInfo.title);
-              setImageURL(book.volumeInfo.imageLinks.smallThumbnail);
-            }}
-            className={
-              isSelected === key ? "border border-yellow-300" : undefined
-            }
-          >
-            <div>
-              <p>{book.volumeInfo.title}</p>
+      {/*  */}
+      {/* 2nd Row */}
+      {/*  */}
+
+      <div className="flex w-4/5 h-1/3 justify-between">
+        {/*  */}
+        {/* quoteContent form */}
+        {/*  */}
+        <div className="flex justify-start rounded-xl shadow-slate800Shadow p-3 w-2/3">
+          <form onSubmit={handleQuoteSubmit} className="w-full flex">
+            <textarea
+              name="quoteContent"
+              value={quoteContent}
+              onChange={(e) => setQuoteContent(e.target.value)}
+              className="p-2 bg-slate-900 w-full h-full"
+            />
+
+            <button type="submit" disabled={disable}>
+              submit
+            </button>
+          </form>
+        </div>
+        {/*  */}
+        {/* book search form */}
+        {/*  */}
+        <div className="border">
+          <input
+            type="text"
+            name="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+
+          <button onClick={handleBookSearch}>search</button>
+
+          <p>{formError}</p>
+        </div>
+      </div>
+
+      {/*  */}
+      {/* third Row */}
+      {/*  */}
+      <div className="border w-4/5 h-1/3">
+        {/*  */}
+        {/* book search results section */}
+        {/*  */}
+        {bookList.length > 0 &&
+          bookList.map((book, key) => (
+            <button
+              key={key}
+              onClick={() => {
+                setIsSelected(key);
+                setAuthors(book.volumeInfo.authors);
+                setBookTitle(book.volumeInfo.title);
+                setImageURL(book.volumeInfo.imageLinks.smallThumbnail);
+              }}
+              className={
+                isSelected === key ? "border border-yellow-300" : undefined
+              }
+            >
               <div>
-                {book.volumeInfo.authors.map((author, key) => (
-                  <p key={key}>{author}</p>
-                ))}
+                <p>{book.volumeInfo.title}</p>
+                <div>{book.volumeInfo.authors}</div>
               </div>
-            </div>
-          </button>
-        ))}
+            </button>
+          ))}
       </div>
     </div>
   );

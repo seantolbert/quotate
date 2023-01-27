@@ -14,7 +14,7 @@ const Navbar = () => {
   const { logout, error } = useLogout();
 
   return (
-    <div className="w-screen top-0">
+    <div className="">
       <nav className="w-full p-5 flex justify-between items-center">
         <Link to="/dashboard" className="uppercase tracking-[15px]">
           quotate

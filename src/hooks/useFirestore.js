@@ -65,7 +65,7 @@ export const useFirestore = (c) => {
     dispatch({ type: "IS_PENDING" });
 
     try {
-      const addedDoc = await addDoc(ref, doc);
+      const addedDoc = await addDoc(ref, doc)
       dispatchIfNotCancelled({ type: "ADDED_DOC", payload: addedDoc });
     } catch (err) {
       dispatchIfNotCancelled({ type: "ERROR", payload: err.message });

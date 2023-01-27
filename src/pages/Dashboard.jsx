@@ -7,7 +7,7 @@ const Dashboard = () => {
   // const { deleteDocument, response } = useFirestore("quotes");
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center">
+    <div className="min-h-screen w-full flex justify-start p-5">
       <LatestQuotes />
     </div>
   );

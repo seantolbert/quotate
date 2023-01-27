@@ -15,11 +15,13 @@ export const useLogin = () => {
     setError(null);
 
     try {
-      const res = await signInWithEmailAndPassword(Auth, email, password);
+      const res = await signInWithEmailAndPassword(Auth, email, password).catch(
+        (err) => setError("Email and/or password is incorrect.")
+      );
 
       const userRef = doc(db, "users", res.user.uid);
 
-      await setDoc(userRef, { online: true });
+      await setDoc(userRef, { online: true }).catch((err) => console.log(err));
 
       dispatch({ type: "LOGIN", payload: res.user });
 
@@ -29,11 +31,11 @@ export const useLogin = () => {
       }
     } catch (err) {
       if (!isCancelled) {
-        setError(err);
+        setError(err.message);
+        console.log(err);
         setIsPending(false);
       }
     }
-
     setIsPending(false);
   };
 

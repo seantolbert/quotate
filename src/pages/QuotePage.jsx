@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 import { Auth } from "../firebase/config";
 import { useDocument } from "../hooks/useDocument";
 import { useFirestore } from "../hooks/useFirestore";
@@ -7,46 +8,51 @@ import { useFirestore } from "../hooks/useFirestore";
 const QuotePage = () => {
   const { id } = useParams();
   const { error, document: quote } = useDocument("quotes", id);
-  const [user, setUser] = useState(null);
 
-  const [isLiked, setIsLiked] = useState();
+  const { user } = useContext(AuthContext);
 
-  useEffect(() => {
-    if (user) {
-      const { document: userDoc } = useDocument("users", Auth.currentUser.uid);
-      setUser(userDoc);
-      setIsLiked(user.favorites.includes(quote.id));
-    }
-  }, [user]);
+  // const [user, setUser] = useState(null);
 
-  const [showInputs, setShowInputs] = useState(false);
-  const [newQuoteContent, setNewQuoteContent] = useState("");
+  // const [isLiked, setIsLiked] = useState();
+  // const { document: userDoc, docError } = useDocument(
+  //   "users",
+  //   // Auth.currentUser.uid
+  // );
 
-  const { updateDocument, response } = useFirestore("quotes");
-  const { updateDocument: updateUserDocument, response: userResponse } =
-    useFirestore("users");
+  // console.log(error);
 
-  const handleUpdateQuote = async () => {
-    await updateDocument(id, { quoteContent: newQuoteContent });
-    if (!response.error) {
-      console.log("successful update");
-    }
-    setShowInputs(false);
-  };
+  // console.log("doc" + " " + docError);
 
-  const handleUnlike = async () => {
-    await updateDocument(id), { hearts: (quote.hearts -= 1) };
-    await updateUserDocument(Auth.currentUser.uid, {
-      favorites: user.favorites.filter((value) => value !== quote.id),
-    });
-  };
 
-  const handleLike = async () => {
-    await updateDocument(id, { hearts: (quote.hearts += 1) });
-    await updateUserDocument(Auth.currentUser.uid, {
-      favorites: [...user.favorites, quote.id],
-    });
-  };
+
+  // const [showInputs, setShowInputs] = useState(false);
+  // const [newQuoteContent, setNewQuoteContent] = useState("");
+
+  // const { updateDocument, response } = useFirestore("quotes");
+  // const { updateDocument: updateUserDocument, response: userResponse } =
+  //   useFirestore("users");
+
+  // const handleUpdateQuote = async () => {
+  //   await updateDocument(id, { quoteContent: newQuoteContent });
+  //   if (!response.error) {
+  //     console.log("successful update");
+  //   }
+  //   setShowInputs(false);
+  // };
+
+  // const handleUnlike = async () => {
+  //   await updateDocument(id), { hearts: (quote.hearts -= 1) };
+  //   await updateUserDocument(Auth.currentUser.uid, {
+  //     favorites: user.favorites.filter((value) => value !== quote.id),
+  //   });
+  // };
+
+  // const handleLike = async () => {
+  //   await updateDocument(id, { hearts: (quote.hearts += 1) });
+  //   await updateUserDocument(Auth.currentUser.uid, {
+  //     favorites: [...user.favorites, quote.id],
+  //   });
+  // };
 
   if (error) {
     return <div>{error}</div>;
@@ -61,7 +67,7 @@ const QuotePage = () => {
       QuotePage
       <p>{id}</p>
       <p>{quote.quoteContent}</p>
-      {showInputs && (
+      {/* {showInputs && (
         <div className="flex gap-5">
           <input
             type="text"
@@ -71,18 +77,18 @@ const QuotePage = () => {
           />
           <button onClick={handleUpdateQuote}>update</button>
         </div>
-      )}
+      )} */}
       <p>{quote.createdBy.displayName}</p>
       <p>likes: {quote.hearts}</p>
-      {user !== null && <p>liked: {isLiked ? "true" : "false"}</p>}
-      <div>
-        {user && (
+      {/* <p>liked: {isLiked ? "true" : "false"}</p> */}
+      {/* <div>
+        {Auth.currentUser && (
           <button onClick={isLiked ? handleUnlike : handleLike}>like</button>
         )}
-      </div>
-      {user && user.uid === quote.createdBy.id && (
+      </div> */}
+      {/* {Auth.currentUser.uid === quote.createdBy.id && (
         <button onClick={() => setShowInputs(!showInputs)}>update</button>
-      )}
+      )} */}
       <img src={quote.book.imageURL} alt="book cover art" />
     </div>
   );

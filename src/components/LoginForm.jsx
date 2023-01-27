@@ -1,30 +1,35 @@
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
-import { Link } from "react-router-dom";
-import {
-  sendPasswordResetEmail,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
-import { Auth } from "../firebase/config";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+
+// import { Link } from "react-router-dom";
+// import {
+//   sendPasswordResetEmail,
+//   GoogleAuthProvider,
+//   signInWithPopup,
+// } from "firebase/auth";
+// import { Auth } from "../firebase/config";
 
 const LoginForm = ({ setIsLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isResetting, setIsResetting] = useState(false);
 
   // const [passwordReset, setPasswordReset] = useState("");
 
   // const [showInput, setShowInput] = useState(false);
 
-  const { fbLogin } = useLogin();
+  const { fbLogin, isPending, error } = useLogin();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    fbLogin(email, password);
+    await fbLogin(email, password);
   };
 
+  const handleClick = () => {
+    console.log("working");
+  };
   // const handlePasswordReset = async (resetEmail) => {
   //   try {
   //     await sendPasswordResetEmail(Auth, resetEmail);
@@ -37,6 +42,7 @@ const LoginForm = ({ setIsLogin }) => {
   return (
     <div className="w-full h-screen flex items-center justify-evenly flex-col">
       <div className="flex flex-col items-center justify-evenly w-4/5 h-3/4 p-10 shadow-slate800Shadow rounded-xl">
+        {/* <button onClick={handleClick}>yoyo</button> */}
         <form
           onSubmit={handleSubmit}
           className="flex flex-col justify-evenly h-full w-4/5 p-2"

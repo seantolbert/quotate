@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className="w-screen absolute bottom-0">
+    <div className="w-screen">
       <div className="w-full flex justify-center gap-5">
         <a
           href="https://tolbert.me"

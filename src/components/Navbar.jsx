@@ -1,5 +1,5 @@
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { faBook, faPlus, faSignOut } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faPlus, faQ, faQuoteLeftAlt, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -26,6 +26,10 @@ const Navbar = () => {
               <p>Welcome {user.displayName}</p>
               <Link to="/">
                 <FontAwesomeIcon icon={faBook} />
+              </Link>
+              <Link to="/myquotes">
+              
+                <FontAwesomeIcon icon={faQuoteLeftAlt} />
               </Link>
               <Link to="/profile">
                 <FontAwesomeIcon icon={faUser} />

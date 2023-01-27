@@ -15,3 +15,7 @@ textarea:focus {
 body::-webkit-scrollbar {
   display: none;
 }
+
+#book-scroller::-webkit-scrollbar {
+  display: none;
+}

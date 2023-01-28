@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       boxShadow: {
         slate800Shadow: "-20px 20px 60px #0c1118, 20px -20px 60px #30415e",
+        slate800Inset: "inset -20px 20px 60px #0c1118, inset 20px -20px 60px #30415e",
       },
     },
   },

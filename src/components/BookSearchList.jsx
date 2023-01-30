@@ -29,7 +29,7 @@ const BookSearchList = ({
               <div className="w-1/3">
                 <img
                   className="w-full rounded-md"
-                  src={book.volumeInfo.imageLinks.smallThumbnail}
+                  src={book.volumeInfo.imageLinks?.smallThumbnail}
                   alt="book image"
                 />
               </div>

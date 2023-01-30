@@ -1,5 +1,10 @@
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { faBook, faPlus, faQ, faQuoteLeftAlt, faSignOut } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBook,
+  faPlus,
+  faQuoteLeftAlt,
+  faSignOut,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -14,7 +19,7 @@ const Navbar = () => {
   const { logout, error } = useLogout();
 
   return (
-    <div className="">
+    <div className="absolute w-screen">
       <nav className="w-full p-5 flex justify-between items-center">
         <Link to="/dashboard" className="uppercase tracking-[15px]">
           quotate
@@ -28,7 +33,6 @@ const Navbar = () => {
                 <FontAwesomeIcon icon={faBook} />
               </Link>
               <Link to="/myquotes">
-              
                 <FontAwesomeIcon icon={faQuoteLeftAlt} />
               </Link>
               <Link to="/profile">

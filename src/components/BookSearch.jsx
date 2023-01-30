@@ -3,13 +3,13 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const BookSearch = ({ handleBookSearch, search, setSearch }) => {
   return (
-    <div className="w-full h-full flex justify-center items-end gap-3">
+    <div className="w-full h-full flex justify-center items-end gap-3 p-5">
       <input
         type="search"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="search for a book"
-        className="p-3 bg-transparent shadow-slate800Shadow rounded-2xl"
+        className="p-3 bg-transparent shadow-slate800Shadow rounded-2xl w-full"
       />
       <button
         type="submit"

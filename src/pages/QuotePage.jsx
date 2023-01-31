@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { CommentForm } from "../components/CommentForm";
+import CommentList from "../components/CommentList";
 import { AuthContext } from "../context/AuthContext";
 import { Auth } from "../firebase/config";
 import { useDocument } from "../hooks/useDocument";
@@ -114,9 +115,14 @@ const QuotePage = () => {
                 </div>
               </>
             ) : (
-              <>
-                <CommentForm />
-              </>
+              <div className="flex w-full h-full">
+                <div className="w-1/3 h-full">
+                  <CommentForm id={id} />
+                </div>
+                <div className="w-2/3 h-full">
+                  <CommentList />
+                </div>
+              </div>
             )}
           </div>
         </div>

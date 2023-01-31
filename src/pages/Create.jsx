@@ -59,7 +59,7 @@ const Create = () => {
       hearts: 0,
     };
 
-    console.log(response);
+    // console.log(response);
     await addDocument(quote);
 
     if (!response.error) {

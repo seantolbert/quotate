@@ -8,7 +8,7 @@ const LatestQuotes = () => {
   console.log(quotes);
 
   return (
-    <div className="w-3/4 flex flex-wrap justify-start gap-5">
+    <div className="w-4/5 flex flex-wrap justify-start gap-5">
       {quotes &&
         quotes.map((quote, key) => <QuoteCard quote={quote} key={key} />)}
     </div>

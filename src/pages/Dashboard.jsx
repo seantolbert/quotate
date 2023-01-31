@@ -3,9 +3,12 @@ import Notifications from "../components/Notifications";
 
 const Dashboard = () => {
   return (
-    <div className="min-h-screen w-screen flex justify-start gap-5 px-5 pt-16">
+    <div className="min-h-screen w-screen flex justify-center gap-5 px-5 pt-16">
+
+      
+
+
       <LatestQuotes />
-      <Notifications />
     </div>
   );
 };

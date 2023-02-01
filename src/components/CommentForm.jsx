@@ -6,8 +6,15 @@ import { Auth } from "../firebase/config";
 import { useFirestore } from "../hooks/useFirestore";
 import { useState } from "react";
 
-export const CommentForm = ({ id }) => {
+export const CommentForm = ({ quoteId }) => {
   const { addDocument } = useFirestore("comments");
+
+  const today = new Date();
+
+  const dtf = new Intl.DateTimeFormat("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+  }).format(today);
 
   const [commentContent, setCommentContent] = useState("");
   const [formError, setFormError] = useState(null);
@@ -23,8 +30,8 @@ export const CommentForm = ({ id }) => {
     const comment = {
       commentContent,
       user,
-      quote: id,
-      date: Timestamp.fromDate(new Date()),
+      quote: quoteId,
+      date: dtf,
     };
 
     await addDocument(comment);
@@ -32,8 +39,8 @@ export const CommentForm = ({ id }) => {
   };
 
   return (
-    <div className="w-full h-full">
-      <p className="w-full tracking-[10px] uppercase h-1/5">Comments</p>
+    <div className="w-full h-full flex flex-col justify-between">
+      <p className="w-full tracking-[10px] uppercase text-sm">Comments</p>
       <textarea
         name="newQuoteContent"
         value={commentContent}

@@ -66,6 +66,7 @@ export const useFirestore = (c) => {
 
     try {
       const addedDoc = await addDoc(ref, doc)
+      // console.log(addedDoc.id)
       dispatchIfNotCancelled({ type: "ADDED_DOC", payload: addedDoc });
     } catch (err) {
       dispatchIfNotCancelled({ type: "ERROR", payload: err.message });

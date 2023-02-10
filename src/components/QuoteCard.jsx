@@ -11,10 +11,11 @@ const QuoteCard = ({ quote, index }) => {
   const user = Auth.currentUser;
 
   return (
-    <div className="flex gap-5 p-5 aspect-auto rounded-3xl border w-fit h-fit relative">
+    <div className="flex gap-5 p-5 aspect-auto rounded-3xl border w-full md:w-fit h-fit relative">
+      
       <Link
         to={user ? `/quotes/${quote.id}` : undefined}
-        className="flex flex-col gap-5"
+        className="flex flex-col gap-5 w-full"
       >
         <p className="text-3xl">{quoteContent}</p>
         <div className="flex gap-3 items-center w-full justify-between">
@@ -24,7 +25,7 @@ const QuoteCard = ({ quote, index }) => {
           </button>
           <div className="flex flex-col gap-3 items-end">
             <p className="text-sm">- {book.author}</p>
-            <p className="italic text-xs">{book.title}</p>
+            <p className="italic text-xs ">{book.title}</p>
           </div>
         </div>
       </Link>

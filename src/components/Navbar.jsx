@@ -6,10 +6,11 @@ import {
   faSignOut,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useLogout } from "../hooks/useLogout";
+import { useWindowDimensions } from "../hooks/useWindowDimensions";
 
 const Navbar = () => {
   const { user } = useContext(AuthContext);
@@ -18,9 +19,11 @@ const Navbar = () => {
 
   const { logout, error } = useLogout();
 
+  const { width } = useWindowDimensions();
+
   return (
     <div className="absolute w-screen">
-      <nav className="w-full p-5 flex justify-between items-center">
+      <nav className="w-full p-1 md:p-5 flex justify-between items-center">
         <Link to="/dashboard" className="uppercase tracking-[15px]">
           quotate
         </Link>
@@ -28,7 +31,10 @@ const Navbar = () => {
         <div className="flex gap-9 items-center">
           {user ? (
             <>
-              <p>Welcome {user.displayName}</p>
+              <div className="border w-8 h-8 rounded-full flex justify-center items-center uppercase">
+                {user.displayName[0]}
+              </div>
+
               <Link to="/">
                 <FontAwesomeIcon icon={faBook} />
               </Link>

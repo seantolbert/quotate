@@ -3,7 +3,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const BookSearch = ({ handleBookSearch, search, setSearch }) => {
   return (
-    <div className="w-full h-full flex justify-center items-end gap-3 p-5">
+    <div className="w-full flex justify-center items-end gap-3">
       <input
         type="search"
         value={search}

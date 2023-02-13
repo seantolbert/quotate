@@ -9,6 +9,9 @@ import Notifications from "./Notifications";
 import QuoteCard from "./QuoteCard";
 import QuoteForm from "./QuoteForm";
 import QuotePreview from "./QuotePreview";
+import UpdateQuoteForm from "./UpdateQuoteForm";
+import BookSummary from "./BookSummary";
+import QuotePageButtons from "./QuotePageButtons";
 
 export {
   Navbar,
@@ -22,4 +25,7 @@ export {
   LatestQuotes,
   QuoteForm,
   QuotePreview,
+  QuotePageButtons,
+  UpdateQuoteForm,
+  BookSummary,
 };

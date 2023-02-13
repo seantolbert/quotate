@@ -11,8 +11,11 @@ import CommentList from "../components/CommentList";
 import UpdateQuoteForm from "../components/UpdateQuoteForm";
 import { useDocument } from "../hooks/useDocument";
 import { useFirestore } from "../hooks/useFirestore";
+import { useWindowDimensions } from "../hooks/useWindowDimensions";
 
 const QuotePage = () => {
+  // const {width} = useWindowDimensions()
+
   const { id } = useParams();
   const { error, document: quote } = useDocument("quotes", id);
 
@@ -48,11 +51,11 @@ const QuotePage = () => {
   }
 
   return (
-    <div className="h-screen w-screen pt-16 flex justify-start">
-      <div className=" w-2/3">
+    <div className="h-screen w-screen pt-16 flex flex-col md:flex-row justify-start">
+      <div className="w-full md:w-2/3">
         <div className=" h-1/2 w-full p-5">
           <div className="w-full h-full rounded-2xl shadow-slate800Shadow flex justify-center items-center ">
-            <p className="lg:tracking-[10px] md:tracking-[5px] text-xl  lg:text-3xl w-4/5">
+            <p className="lg:tracking-[10px] md:tracking-[5px] text-xl lg:text-3xl w-4/5">
               {quote.quoteContent}
             </p>
           </div>

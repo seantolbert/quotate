@@ -5,9 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { Auth } from "../firebase/config";
 import { useFirestore } from "../hooks/useFirestore";
 import { useState } from "react";
+import { useCollection } from "../hooks/useCollection";
 
-export const CommentForm = ({ quoteId }) => {
+export const CommentForm = ({ quote }) => {
   const { addDocument } = useFirestore("comments");
+
+  const { documents: comments } = useCollection("comments");
 
   const today = new Date();
 
@@ -19,8 +22,6 @@ export const CommentForm = ({ quoteId }) => {
   const [commentContent, setCommentContent] = useState("");
   const [formError, setFormError] = useState(null);
 
-  const navigate = useNavigate();
-
   const handleAddComment = async () => {
     const user = {
       username: Auth.currentUser.displayName,
@@ -30,31 +31,48 @@ export const CommentForm = ({ quoteId }) => {
     const comment = {
       commentContent,
       user,
-      quote: quoteId,
+      quote: quote.id,
       date: dtf,
     };
 
     await addDocument(comment);
+
     setCommentContent("");
   };
 
-  return (
-    <div className="w-full h-full flex flex-col justify-between">
-      <p className="w-full tracking-[10px] uppercase text-sm">Comments</p>
-      <textarea
-        name="newQuoteContent"
-        value={commentContent}
-        onChange={(e) => setCommentContent(e.target.value)}
-        className="h-3/5 w-full bg-slate-700 rounded-xl p-3"
-        placeholder="comment"
-      />
+  const commentCount = () => {
+    const arr = comments?.filter(comment => comment.quote === quote.id)
+    return arr?.length
+  };
 
-      <button
-        onClick={handleAddComment}
-        className="h-1/5 bg-slate-600 uppercase text-xs tracking-[10px] rounded-xl w-full flex justify-center items-center"
-      >
-        add comment
-      </button>
+  return (
+    <div className="w-full flex flex-col justify-between">
+      <div className="flex gap-5 pb-5">
+        <p className="text-slate-500 uppercase tracking-[10px]">comments</p>
+        <p>{commentCount()}</p>
+      </div>
+
+      <div className="flex justify-between">
+        <div className="bg-black text-white rounded-full border w-14 h-14 flex justify-center items-center text-2xl">
+          S
+        </div>
+        <input
+          type="text"
+          placeholder="Add a comment..."
+          className="bg-slate-500 rounded-xl w-4/5 p-3 text-xl"
+          value={commentContent}
+          onChange={(e) => setCommentContent(e.target.value)}
+        />
+      </div>
+      <div className="w-full flex justify-end">
+        <button
+          onClick={handleAddComment}
+          className="uppercase text-xs tracking-[7px] pt-5 text-green-400"
+        >
+          add comment
+        </button>
+      </div>
+      <div className="w-full h-0.5 rounded-full bg-slate-600 mt-5"></div>
     </div>
   );
 };

@@ -83,45 +83,30 @@ const Create = () => {
   };
 
   return (
-    <div className="w-screen  h-screen px-5 flex justify-center">
-      <div className="flex w-full h-full ">
-        <div className=" w-3/4 h-full flex flex-col">
-          <div className=" h-2/3 w-full">
-            <QuotePreview
-              quoteContent={quoteContent}
-              authors={authors}
-              bookTitle={bookTitle}
-            />
-          </div>
-          <div className=" h-1/3 w-full">
-            <QuoteForm
-              quoteContent={quoteContent}
-              setQuoteContent={setQuoteContent}
-              handleCreateQuote={handleCreateQuote}
-              disable={disable}
-            />
-          </div>
-        </div>
-        <div className=" w-1/4 flex flex-col">
-          <div className="h-1/5 w-full">
-            <BookSearch
-              handleBookSearch={handleBookSearch}
-              search={search}
-              setSearch={setSearch}
-            />
-          </div>
-          <div className="h-4/5 w-full ">
-            <BookSearchList
-              isSelected={isSelected}
-              setIsSelected={setIsSelected}
-              setBookTitle={setBookTitle}
-              setAuthors={setAuthors}
-              setImageURL={setImageURL}
-              bookList={bookList}
-            />
-          </div>
-        </div>
-      </div>
+    <div className="w-screen px-5 flex flex-col justify-center">
+      <QuotePreview
+        quoteContent={quoteContent}
+        authors={authors}
+        bookTitle={bookTitle}
+        setQuoteContent={setQuoteContent}
+        handleCreateQuote={handleCreateQuote}
+        disable={disable}
+      />
+
+      <BookSearch
+        handleBookSearch={handleBookSearch}
+        search={search}
+        setSearch={setSearch}
+      />
+
+      <BookSearchList
+        isSelected={isSelected}
+        setIsSelected={setIsSelected}
+        setBookTitle={setBookTitle}
+        setAuthors={setAuthors}
+        setImageURL={setImageURL}
+        bookList={bookList}
+      />
     </div>
   );
 };

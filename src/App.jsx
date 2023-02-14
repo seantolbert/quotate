@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import { Navbar, Footer } from "./components";
 import Navbar2 from "./components/Navbar2";
-import Sidebar from "./components/Sidebar";
 import { AuthContext } from "./context/AuthContext";
 import { useWindowDimensions } from "./hooks/useWindowDimensions";
 import {

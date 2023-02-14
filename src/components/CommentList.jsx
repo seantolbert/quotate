@@ -7,22 +7,26 @@ import CommentCard from "./CommentCard";
 const CommentList = ({ quote }) => {
   const { documents: comments } = useCollection("comments");
 
-
-  console.log(comments)
-  console.log(quote.id)
+  const quoteComments = comments?.filter(
+    (comment) => quote.id === comment.quote
+  );
 
   return (
     <div
       id="book-scroller"
-      className="flex flex-col gap-5 w-full h-full overflow-y-scroll pt-5"
+      className="flex flex-col gap-5 w-full h-full pt-5 overflow-y-scroll"
     >
-      {comments?.length > 0 && (
-        comments
-          ?.filter((comment) => quote.id === comment.quote)
-          .map((comment, key) => {
-            return <CommentCard com={comment} key={key} />;
-          })
-      ) }
+      {quoteComments?.length > 0 ? (
+        quoteComments.map((comment, key) => {
+          return <CommentCard com={comment} key={key} />;
+        })
+      ) : (
+        <p
+          className={`w-full text-center text-slate-400 uppercase tracking-[7px]`}
+        >
+          no comments yet
+        </p>
+      )}
     </div>
   );
 };

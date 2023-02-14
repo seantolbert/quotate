@@ -47,7 +47,7 @@ const Create = () => {
 
     const book = {
       title: bookTitle,
-      author: authors[0],
+      author: authors ? authors[0] : "unknown",
       imageURL,
     };
 
@@ -83,7 +83,7 @@ const Create = () => {
   };
 
   return (
-    <div className="w-screen px-5 flex flex-col justify-center">
+    <div className="w-screen min-h-screen px-5 flex flex-col ">
       <QuotePreview
         quoteContent={quoteContent}
         authors={authors}
@@ -107,6 +107,18 @@ const Create = () => {
         setImageURL={setImageURL}
         bookList={bookList}
       />
+
+      <div className="w-full flex justify-evenly">
+        <button className="w-1/3 py-3 text-slate-500 underline">cancel</button>
+        <button
+          className={`w-1/3 py-3 ${
+            disable ? "bg-slate-600 text-slate-400" : "bg-slate-400"
+          } rounded-xl tracking-[7px] uppercase flex justify-center `}
+          onClick={handleCreateQuote}
+        >
+          create
+        </button>
+      </div>
     </div>
   );
 };

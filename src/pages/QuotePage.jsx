@@ -6,9 +6,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { CommentForm } from "../components/CommentForm";
-import CommentList from "../components/CommentList";
-import UpdateQuoteForm from "../components/UpdateQuoteForm";
+import { UpdateQuoteForm, CommentList, CommentForm } from "../components";
 import { useDocument } from "../hooks/useDocument";
 import { useFirestore } from "../hooks/useFirestore";
 import { useWindowDimensions } from "../hooks/useWindowDimensions";

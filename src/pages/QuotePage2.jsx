@@ -1,19 +1,9 @@
-import {
-  faExchange,
-  faHeart,
-  faTrash,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { CommentForm } from "../components/CommentForm";
-import CommentList from "../components/CommentList";
-import UpdateQuoteForm from "../components/UpdateQuoteForm";
-import { Auth } from "../firebase/config";
+import { UpdateQuoteForm,CommentForm, CommentList } from "../components";
 import { useDocument } from "../hooks/useDocument";
 import { useFirestore } from "../hooks/useFirestore";
-import { comments } from "../data/comments";
-import CommentCard from "../components/CommentCard";
+
 import BookSummary from "../components/BookSummary";
 import QuotePageButtons from "../components/QuotePageButtons";
 
@@ -53,7 +43,7 @@ const QuotePage2 = () => {
   }
 
   return (
-    <div className="flex flex-col items-center gap-5 px-2">
+    <div className="flex flex-col items-center gap-5 px-2 min-h-screen">
       <UpdateQuoteForm
         quoteContent={quote.quoteContent}
         isUpdating={isUpdating}

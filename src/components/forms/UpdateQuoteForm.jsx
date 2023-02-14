@@ -13,13 +13,13 @@ const UpdateQuoteForm = ({
   return (
     <div className="w-full flex flex-col h-[30vh] justify-center">
       {isUpdating ? (
-        <div className="w-full h-full border rounded-lg flex flex-col justify-between">
+        <div className="w-full h-full rounded-lg flex flex-col justify-between">
           <textarea
             type="text"
             name="newQuoteContent"
             value={newQuoteContent}
             onChange={(e) => setNewQuoteContent(e.target.value)}
-            className="w-full bg-transparent text-3xl "
+            className="w-full h-full bg-transparent text-3xl "
           />
           <div className="w-full flex justify-end gap-5 p-2">
             <button

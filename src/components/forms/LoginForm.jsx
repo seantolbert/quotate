@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLogin } from "../hooks/useLogin";
+import { useLogin } from "../../hooks/useLogin";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
@@ -41,11 +41,10 @@ const LoginForm = ({ setIsLogin }) => {
 
   return (
     <div className="w-full h-screen flex items-center justify-evenly flex-col">
-      <div className="flex flex-col items-center justify-evenly w-4/5 h-3/4 p-10 shadow-slate800Shadow rounded-xl">
-        {/* <button onClick={handleClick}>yoyo</button> */}
+      <div className="flex flex-col items-center justify-evenly w-full h-3/4 px-5 md:shadow-slate800Shadow rounded-xl">
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col justify-evenly h-full w-4/5 p-2"
+          className="flex flex-col justify-evenly h-full p-2"
         >
           <div>
             <p>Welcome to</p>

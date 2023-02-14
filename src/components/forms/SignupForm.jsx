@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useSignup } from "../hooks/useSignup";
+import { useSignup } from "../../hooks/useSignup";
 import { Link, useNavigate } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,7 +24,7 @@ const SignupForm = ({ setIsLogin }) => {
 
   return (
     <div className="h-screen w-full flex justify-evenly items-center flex-col">
-      <div className="flex flex-col items-center justify-evenly w-4/5 h-3/4 px-10 shadow-slate800Shadow rounded-xl">
+      <div className="flex flex-col items-center justify-evenly w-full h-3/4 px-5 md:px-10 md:shadow-slate800Shadow rounded-xl">
         <form
           onSubmit={handleSubmit}
           className="flex flex-col justify-evenly h-full w-4/5 p-2"

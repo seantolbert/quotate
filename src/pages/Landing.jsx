@@ -15,13 +15,11 @@ const Landing = () => {
           <img src={Logo} alt="yoyo" />
         </div>
       )}
-      <div className="w-1/2">
-        {isLogin ? (
-          <LoginForm setIsLogin={setIsLogin} />
-        ) : (
-          <SignupForm setIsLogin={setIsLogin} />
-        )}
-      </div>
+      {isLogin ? (
+        <LoginForm setIsLogin={setIsLogin} />
+      ) : (
+        <SignupForm setIsLogin={setIsLogin} />
+      )}
     </div>
   );
 };

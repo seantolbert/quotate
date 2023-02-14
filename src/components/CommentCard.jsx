@@ -7,12 +7,12 @@ const CommentCard = ({ com }) => {
   const { deleteDocument } = useFirestore("comments");
 
   return (
-    <div className="flex flex-col w-full p-2 rounded-lg bg-slate-500 relative gap-2">
+    <div className="flex flex-col w-full p-2 rounded-lg relative gap-2  border-b-2">
       <div className="flex justify-between items-center">
         <p className="w-full">{com.commentContent}</p>
       </div>
       <div className="flex gap-5 w-full justify-between items-center">
-        <p className="text-slate-900 uppercase text-sm tracking-[5px] font-extrabold">
+        <p className="text-slate-400 text-sm font-extrabold">
           {com.user.username}
         </p>
         <div className="h-0.5 w-full bg-slate-600" />

@@ -3,15 +3,19 @@ import {
   faHamburger,
   faPlus,
   faQuoteLeftAlt,
+  faSignOut,
   faUser,
   faX,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useLogout } from "../hooks/useLogout";
 
 const Navbar2 = () => {
   const [showMenu, setShowMenu] = useState(false);
+
+  const { logout } = useLogout();
 
   return (
     <div className="fixed left-0 bottom-0 z-[10] p-3 flex justify-between w-full">

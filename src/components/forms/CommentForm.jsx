@@ -2,12 +2,12 @@ import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Timestamp } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { Auth } from "../firebase/config";
-import { useFirestore } from "../hooks/useFirestore";
+import { Auth } from "../../firebase/config";
+import { useFirestore } from "../../hooks/useFirestore";
 import { useState } from "react";
-import { useCollection } from "../hooks/useCollection";
+import { useCollection } from "../../hooks/useCollection";
 
-export const CommentForm = ({ quote }) => {
+const CommentForm = ({ quote }) => {
   const { addDocument } = useFirestore("comments");
 
   const { documents: comments } = useCollection("comments");
@@ -41,8 +41,8 @@ export const CommentForm = ({ quote }) => {
   };
 
   const commentCount = () => {
-    const arr = comments?.filter(comment => comment.quote === quote.id)
-    return arr?.length
+    const arr = comments?.filter((comment) => comment.quote === quote.id);
+    return arr?.length;
   };
 
   return (
@@ -76,3 +76,5 @@ export const CommentForm = ({ quote }) => {
     </div>
   );
 };
+
+export default CommentForm;

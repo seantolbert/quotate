@@ -26,11 +26,8 @@ const Navbar2 = () => {
         <FontAwesomeIcon icon={showMenu ? faX : faHamburger} />
       </button>
       {showMenu && (
-        <div className="flex gap-5 items-center bg-slate-900 rounded-full w-3/5 justify-between px-5">
-          <Link to="/" className="text-2xl">
-            <FontAwesomeIcon icon={faBook} />
-          </Link>
-          <Link to="/myquotes">
+        <div className="flex gap-9 items-center bg-slate-900 rounded-full justify-between px-5">
+          <Link to="/">
             <FontAwesomeIcon icon={faQuoteLeftAlt} />
           </Link>
           <Link to="/profile">

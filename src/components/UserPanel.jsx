@@ -20,7 +20,7 @@ const UserPanel = ({
   const [showEmailInput, setShowEmailInput] = useState(false);
 
   return (
-    <div className="w-full p-5">
+    <div className="w-full md:w-1/3 p-5">
       <div className="flex flex-col shadow-slate800Shadow h-full w-full rounded-2xl gap-10 p-5">
         <div className="w-full flex justify-center">
           <div className="border-8 rounded-full h-48 w-48 flex justify-center items-center text-5xl uppercase">

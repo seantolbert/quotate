@@ -18,12 +18,12 @@ const QuoteCard = ({ quote, index }) => {
         className="flex flex-col gap-5 w-full"
       >
         <p className="text-3xl">{quoteContent}</p>
-        <div className="flex gap-3 items-center w-full justify-between">
-          <button className="flex gap-3 items-center pr-10">
+        <div className="flex gap-3 items-center w-full justify-end">
+          {/* <button className="flex gap-3 items-center pr-10">
             <FontAwesomeIcon icon={faHeart} />
             {hearts}
-          </button>
-          <div className="flex flex-col gap-3 items-end">
+          </button> */}
+          <div className="flex flex-col items-end">
             <p className="text-sm">- {book.author}</p>
             <p className="italic text-xs ">{book.title}</p>
           </div>

@@ -40,7 +40,7 @@ const LoginForm = ({ setIsLogin }) => {
   // };
 
   return (
-    <div className="w-full h-screen flex items-center justify-evenly flex-col">
+    <div className="w-full md:w-1/3 h-screen flex items-center justify-evenly flex-col">
       <div className="flex flex-col items-center justify-evenly w-full h-3/4 px-5 md:shadow-slate800Shadow rounded-xl">
         <form
           onSubmit={handleSubmit}

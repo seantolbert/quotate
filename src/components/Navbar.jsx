@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <div className="absolute w-screen">
-      <nav className="w-full p-1 md:p-5 flex justify-between items-center">
+      <nav className="w-full p-5 flex justify-between items-center">
         <Link to="/dashboard" className="uppercase tracking-[15px]">
           quotate
         </Link>
@@ -36,9 +36,6 @@ const Navbar = () => {
               </div>
 
               <Link to="/">
-                <FontAwesomeIcon icon={faBook} />
-              </Link>
-              <Link to="/myquotes">
                 <FontAwesomeIcon icon={faQuoteLeftAlt} />
               </Link>
               <Link to="/profile">

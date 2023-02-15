@@ -11,7 +11,7 @@ const UpdateQuoteForm = ({
   const quoteRef = useRef();
 
   return (
-    <div className="w-full flex flex-col h-[30vh] justify-center">
+    <div className="w-full flex flex-col h-[30vh] py-5">
       {isUpdating ? (
         <div className="w-full h-full rounded-lg flex flex-col justify-between">
           <textarea
@@ -37,9 +37,17 @@ const UpdateQuoteForm = ({
           </div>
         </div>
       ) : (
-        <p ref={quoteRef} className="text-3xl">
-          {quoteContent}
-        </p>
+        <div className="flex items-center justify-between my-5">
+          <div className=" h-full text-7xl flex items-center font-serif">
+            "
+          </div>
+          <p ref={quoteRef} className="text-3xl text-center">
+            {quoteContent}
+          </p>
+          <div className=" h-full text-7xl flex items-center rotate-180 font-serif">
+            "
+          </div>
+        </div>
       )}
     </div>
   );

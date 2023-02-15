@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { UpdateQuoteForm,CommentForm, CommentList } from "../components";
+import { UpdateQuoteForm, CommentForm, CommentList } from "../components";
 import { useDocument } from "../hooks/useDocument";
 import { useFirestore } from "../hooks/useFirestore";
 
@@ -30,8 +30,8 @@ const QuotePage2 = () => {
   };
 
   const handleUpdate = async () => {
-    await updateDocument(quote.id, { quoteContent: newQuoteContent });
     setIsUpdating(false);
+    await updateDocument(quote.id, { quoteContent: newQuoteContent });
   };
 
   if (error) {
@@ -43,7 +43,7 @@ const QuotePage2 = () => {
   }
 
   return (
-    <div className="flex flex-col items-center gap-5 px-2 min-h-screen">
+    <div className="flex flex-wrap items-center m-auto gap-5 px-2 pt-4 min-h-screen w-screen md:max-w-5xl">
       <UpdateQuoteForm
         quoteContent={quote.quoteContent}
         isUpdating={isUpdating}

@@ -7,13 +7,15 @@ import BookSearchList from "./BookSearchList";
 import LatestQuotes from "./LatestQuotes";
 import Notifications from "./Notifications";
 import QuoteCard from "./QuoteCard";
-import QuoteForm from "./QuoteForm";
+import QuoteForm from "./forms/QuoteForm";
 import QuotePreview from "./QuotePreview";
 import BookSummary from "./BookSummary";
 import QuotePageButtons from "./QuotePageButtons";
 import UpdateQuoteForm from "./forms/UpdateQuoteForm";
 import CommentList from "./CommentList";
-import CommentForm  from "./forms/CommentForm";
+import CommentForm from "./forms/CommentForm";
+import Filter from "./Filter";
+
 
 export {
   Navbar,
@@ -23,6 +25,7 @@ export {
   SignupForm,
   BookSearch,
   BookSearchList,
+  Filter,
   Notifications,
   QuoteCard,
   LatestQuotes,

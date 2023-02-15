@@ -42,7 +42,7 @@ const BookSearchList = ({
             </button>
           ))
         ) : (
-          <p className="w-4/5">search for the book you found the quote in</p>
+          <p className="w-full text-2xl">search for the book you found the quote in</p>
         )}
       </div>
     </div>

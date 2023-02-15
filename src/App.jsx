@@ -10,7 +10,6 @@ import {
   Dashboard,
   MyQuotesPage,
   Profile,
-  // QuotePage,
   QuotePage2,
   Landing,
 } from "./pages";
@@ -35,10 +34,6 @@ function App() {
             <Route
               path="/profile"
               element={user ? <Profile /> : <Navigate to="/" />}
-            />
-            <Route
-              path="/myquotes"
-              element={user ? <MyQuotesPage /> : <Navigate to="/" />}
             />
             <Route
               path="/create"

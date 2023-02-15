@@ -52,7 +52,7 @@ const CommentForm = ({ quote }) => {
         <p>{commentCount()}</p>
       </div>
 
-      <div className="flex justify-between">
+      <div className="flex justify-evenly">
         <div className="bg-black text-white rounded-full border w-14 h-14 flex justify-center items-center text-2xl">
           S
         </div>

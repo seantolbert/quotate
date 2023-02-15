@@ -1,6 +1,6 @@
 const BookSummary = ({ quote }) => {
   return (
-    <div className="w-full flex gap-5">
+    <div className="w-full md:w-2/3 flex gap-5">
       <div className="w-1/3">
         <img
           src={quote.book.imageURL}

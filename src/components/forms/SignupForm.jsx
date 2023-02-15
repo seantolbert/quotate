@@ -23,7 +23,7 @@ const SignupForm = ({ setIsLogin }) => {
   const disable = password !== confirm;
 
   return (
-    <div className="h-screen w-full flex justify-evenly items-center flex-col">
+    <div className="h-screen w-full md:w-1/3 flex justify-evenly items-center flex-col">
       <div className="flex flex-col items-center justify-evenly w-full h-3/4 px-5 md:px-10 md:shadow-slate800Shadow rounded-xl">
         <form
           onSubmit={handleSubmit}

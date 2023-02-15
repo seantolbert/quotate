@@ -46,7 +46,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="h-screen w-screen flex flex-col justify-start px-5">
+    <div className="h-screen w-screen flex flex-col md:flex-row justify-start px-5 md:pt-10">
       <UserPanel
         setNewEmail={setNewEmail}
         setNewDisplayName={setNewDisplayName}
@@ -62,12 +62,12 @@ const Profile = () => {
       {/* book scroller */}
       {/*  */}
 
-      <div id="book-scroller" className="w-full p-5">
+      <div id="book-scroller" className="w-full md:w-2/3 p-5">
         <div className="flex flex-wrap">
           {quotes
             ?.filter((quote) => quote.createdBy.id === user.uid)
             .map((quote, key) => (
-              <div className="w-1/3 p-2" key={key}>
+              <div className="w-1/3 md:w-1/5 p-2" key={key}>
                 <img
                   src={quote.book.imageURL}
                   className="w-full h-full rounded-lg"

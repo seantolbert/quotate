@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const QuotePageButtons = ({ handleSwitch, handleDelete }) => {
   return (
-    <div className="w-full flex justify-evenly">
+    <div className="w-full flex md:max-w-1/3 md:flex-auto justify-evenly">
       <button className="font-bold text-cyan-300 flex justify-center items-center gap-2 py-3 w-1/4 uppercase">
         <FontAwesomeIcon icon={faHeart} />
         like

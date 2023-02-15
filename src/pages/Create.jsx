@@ -83,7 +83,7 @@ const Create = () => {
   };
 
   return (
-    <div className="w-screen min-h-screen px-5 flex flex-col ">
+    <div className="w-screen min-h-screen px-5 flex flex-col md:pt-10 md:max-w-5xl m-auto ">
       <QuotePreview
         quoteContent={quoteContent}
         authors={authors}
